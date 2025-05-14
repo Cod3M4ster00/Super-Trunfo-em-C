@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// estrutura da carta
+struct Carta {
+    char nome[30];
+    int forca;
+    int velocidade;
+    int inteligencia;
+};
+
+int main() {
+    // declarando duas cartas manualmente
+    struct Carta carta1;
+    struct Carta carta2;
+
+    // carta 1
+    strcpy(carta1.nome, "Cavaleiro");
+    carta1.forca = 75;
+    carta1.velocidade = 60;
+    carta1.inteligencia = 50;
+
+    // carta 2
+    strcpy(carta2.nome, "Mago");
+    carta2.forca = 40;
+    carta2.velocidade = 70;
+    carta2.inteligencia = 90;
+
+    int escolha;
+    int valor1, valor2;
+
+    printf("Escolha um atributo para competir:\n");
+    printf("1 - Força\n");
+    printf("2 - Velocidade\n");
+    printf("3 - Inteligência\n");
+    printf("Sua escolha: ");
+    scanf("%d", &escolha);
+
+    // pegando o atributo escolhido
+    if (escolha == 1) {
+        valor1 = carta1.forca;
+        valor2 = carta2.forca;
+    } else if (escolha == 2) {
+        valor1 = carta1.velocidade;
+        valor2 = carta2.velocidade;
+    } else if (escolha == 3) {
+        valor1 = carta1.inteligencia;
+        valor2 = carta2.inteligencia;
+    } else {
+        printf("Opção inválida.\n");
+        return 0;
+    }
+
+    // mostrando as cartas (só pra conferir)
+    printf("\nCarta 1: %s\n", carta1.nome);
+    printf("Força: %d, Velocidade: %d, Inteligência: %d\n", carta1.forca, carta1.velocidade, carta1.inteligencia);
+
+    printf("\nCarta 2: %s\n", carta2.nome);
+    printf("Força: %d, Velocidade: %d, Inteligência: %d\n", carta2.forca, carta2.velocidade, carta2.inteligencia);
+
+    // resultado
+    printf("\nResultado: ");
+    if (valor1 > valor2) {
+        printf("%s venceu!\n", carta1.nome);
+    } else if (valor2 > valor1) {
+        printf("%s venceu!\n", carta2.nome);
